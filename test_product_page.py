@@ -12,7 +12,7 @@ def test_guest_can_add_product_to_basket(browser, link):
     product_page = ProductPage(browser, link)
     product_page.open()
     product_page.go_to_add_basket()
-    time.sleep(5)
+    time.sleep(2)
 
 link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
 
@@ -34,3 +34,17 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     product_page.open()
     product_page.go_to_add_basket()
     product_page.should_be_message_disappeared()
+
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_login_link()
+    time.sleep(2)
+
+def test_guest_can_go_to_login_page_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/excession_51/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.go_to_login_page()
+    time.sleep(2)
