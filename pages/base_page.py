@@ -2,7 +2,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from .locators import BasePageLocators
+from .locators import BasePageLocators, BasketPageLocators
 import math
 
 class BasePage():
@@ -43,6 +43,14 @@ class BasePage():
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def go_to_basket_page(self):
+        self.should_be_basket_link()
+        link = self.browser.find_element(*BasketPageLocators.BTN_BASKET)
+        link.click()
+
+    def should_be_basket_link(self):
+        assert self.is_element_present(*BasketPageLocators.BTN_BASKET), "Basket link is not presented"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
