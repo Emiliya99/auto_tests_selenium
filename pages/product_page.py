@@ -6,8 +6,6 @@ class ProductPage(BasePage):
         self.should_be_add_basket()
         btn_add_basket = self.browser.find_element(*ProductPageLocators.BTN_ADD_BASKET)
         btn_add_basket.click()
-        # self.solve_quiz_and_get_code()
-        self.should_be_product_main()
 
     def should_be_add_basket(self):
         assert self.is_element_present(*ProductPageLocators.BTN_ADD_BASKET), \
